@@ -1,4 +1,5 @@
 {% extends 'arandusite/base.html' %}
+{% load staticfiles %}
 {% load i18n %}
 {% block content %}
 {% language user.userprofile.language.code %}
@@ -22,11 +23,11 @@
           <div class="content-left column">
             <div id="list-info" class="portal-panel green">
               <div class="row">
-                <div id="list-name" class="col-sm-9">WebGL</div>
-                <button class="btn btn-default btn-xs col-sm-3"><div class="price"><div class="unlock-by">unlock by</div><span>55<img src="static/img/arrowcoin2.svg"></span></div></button>
+                <div id="list-name" class="col-sm-9">{{object.title}}</div>
+                <button class="btn btn-default btn-xs col-sm-3"><div class="price"><div class="unlock-by">unlock by</div><span>55<img src="{% static "img/arrowcoin2.svg" %}"></span></div></button>
               </div>
               
-              <div id="list-description">3D games, scientific simulation, virtual/augmented reality on web, without plugins</div>
+              <div id="list-description">{{object.description}}</div>
               
             </div>
             <div id="content-list" class="portal-panel no-title-padding">
@@ -44,14 +45,14 @@
                     aria-valuemin="0" aria-valuemax="100" style="width:100%">
                     </div>
                   </div>
-                  <i class="fa fa-file-text"></i> Colorindo <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="static/img/arrowcoin2.svg"></span></div></a>
+                  <i class="fa fa-file-text"></i> Colorindo <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static 'img/arrowcoin2.svg' %} "></span></div></a>
                 <a href="#" class="list-group-item disabled non-paid">
                   <div class="progress vertical-progressbar">
                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
                     aria-valuemin="0" aria-valuemax="100" style="width:100%">
                     </div>
                   </div>
-                  <i class="fa fa-check-square-o"></i> Colorindo <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="static/img/arrowcoin2.svg"></span></div></a>
+                  <i class="fa fa-check-square-o"></i> Colorindo <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static 'img/arrowcoin2.svg' %}"></span></div></a>
                 <a href="#" class="list-group-item">
                   <div class="progress vertical-progressbar">
                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
@@ -65,21 +66,21 @@
                     aria-valuemin="0" aria-valuemax="100" style="width:40%">
                     </div>
                   </div>
-                  <i class="fa fa-video-camera"></i> Animação <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="static/img/arrowcoin2.svg"></span></div></a>
+                  <i class="fa fa-video-camera"></i> Animação <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static "img/arrowcoin2.svg"%}"></span></div></a>
                 <a href="#" class="list-group-item disabled non-paid">
                   <div class="progress vertical-progressbar">
                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
                     aria-valuemin="0" aria-valuemax="100" style="width:40%">
                     </div>
                   </div>
-                  <i class="fa fa-flask"></i> Textura <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="static/img/arrowcoin2.svg"></span></div></a>
+                  <i class="fa fa-flask"></i> Textura <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static "img/arrowcoin2.svg" %}"></span></div></a>
                 <a href="#" class="list-group-item disabled non-paid">
                   <div class="progress vertical-progressbar">
                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
                     aria-valuemin="0" aria-valuemax="100" style="width:40%">
                     </div>
                   </div>
-                  <i class="fa fa-gamepad"></i> Carregando Objetos Externos <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="static/img/arrowcoin2.svg"></span></div></a>
+                  <i class="fa fa-gamepad"></i> Carregando Objetos Externos <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static "img/arrowcoin2.svg" %}"></span></div></a>
                 <a href="#" class="list-group-item">
                   <div class="progress vertical-progressbar">
                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
@@ -115,7 +116,7 @@
             <div id="content-panel" class = "content portal-panel">
               
               <div class="content-video">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/5INZKqTfnQI" frameborder="0" allowfullscreen></iframe>
+                <canvas id="aranducanvas" width="960" height="540" style="background: red"/>
               </div>
               <div class="content-info">
                 <div class="content-info-text">
@@ -127,7 +128,7 @@
                     <div class="progress">
                       <div class="progress-bar  progress-bar-striped active progress-bar-success" role="progressbar" aria-valuenow="40"
                       aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                      <span id="score-value"><img src="static/img/feather2.svg"> 30/280</span>
+                      <span id="score-value"><img src="{% static 'img/feather2.svg' %}" > 30/280</span>
                       </div>
                     </div>
                   </div>
@@ -433,8 +434,8 @@ $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \De
             <div id="you-have" class="portal-panel no-title-padding">
               <div class="title"><i class="fa fa-user"></i> Você tem</div>
               <span class="center-flex flex-row">
-                <span class="center-flex flex-row"><img src="static/img/feather2.svg"> <span class="center-flex flex-column"><span>53.234</span><span class="portal-text-9">pontos</span> </span></span>
-                <span class="center-flex flex-row"><img src="static/img/arrowcoin2.svg"><span class="center-flex flex-column"><span>120</span><span class="portal-text-9">flechas</span></span> </span>  
+                <span class="center-flex flex-row"><img src="{% static 'img/feather2.svg' %}"> <span class="center-flex flex-column"><span>53.234</span><span class="portal-text-9">pontos</span> </span></span>
+                <span class="center-flex flex-row"><img src="{% static 'img/arrowcoin2.svg' %}"><span class="center-flex flex-column"><span>120</span><span class="portal-text-9">flechas</span></span> </span>  
               </span>
               
             </div>
@@ -461,9 +462,25 @@ $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \De
   </div>  
 </div>
 
-<script type="text/javascript" src="static/js/marked.js"></script>
-<script type="text/javascript" src="static/js/markdown.js"></script>
+
+{% endlanguage %}
+{% endblock %}
+
+{% block script-extra %}
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="{% static 'js/marked.min.js' %} "></script>
+<script type="text/javascript" src="{% static 'js/markdown.js' %} "></script>
 <script>
+
+  var CommandType = {
+    PRESS: 1,
+    MOVE: 2,
+    RELEASE: 3,
+    CHANGE_COLOR: 4,
+    SET_WIDTH: 5
+  };
+
+
   var skills_position = -1;
   var notes_position = -1;
   var user_info_position = -1;
@@ -477,7 +494,7 @@ $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \De
   });
   $(function () {
     $("[data-toggle = 'tooltip']").tooltip(); 
-    $(".pagination").rPage();
+    //$(".pagination").rPage();
     var preview_notes = new Preview();
     var preview_comments = new Preview();
     preview_notes.Init("annotation-widget-preview",
@@ -502,7 +519,7 @@ $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \De
         preview_comments.Update();
       }
     });
-    $("#annotation-preview-chk").bootstrapSwitch();
+    //$("#annotation-preview-chk").bootstrapSwitch();
 
     var skills = $(".portal-panel .skills").parent();
     var notes = $("#notes");
@@ -627,8 +644,113 @@ $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \De
       smartLists: true,
       smartypants: false
     });
+
+    var canvas = document.getElementById("aranducanvas");
+    var ctx = canvas.getContext('2d');
+
+    var video_data = [[CommandType.PRESS,     0,  25, 33],
+                      [CommandType.MOVE,   1000, 200,300],
+                      [CommandType.MOVE,   2000, 420,330],
+                      [CommandType.MOVE,   3000, 600,200],
+                      [CommandType.RELEASE,4050, 600,200]];
+    //get("dados.ads").then(function(data){
+
+    //});
+    canvas.addEventListener("mouseup", function(event){
+      startPlaying(canvas, ctx, video_data);
+    });
+    
   });
 
+  var canvas, ctx, video_data;
+  var current_event, current_time, start_time;
+  var animando = true;
+  function startPlaying(_canvas, _ctx, _video_data){
+    canvas = _canvas;
+    ctx = _ctx;
+    video_data = _video_data;
+    current_event = 0;
+    start_time = new Date().getTime();
+
+    tick();
+  }
+
+  function tick(){
+    if(animando)
+      requestAnimFrame(tick);
+    current_time = new Date().getTime();
+    if(current_time - start_time > video_data[current_event][1] && video_data.length < current_event){
+      desenhar();
+    }
+  }
+  var pressed = false;
+  function desenhar(){
+    var video_frame = video_data[current_event];
+    console.log(video_frame[0], current_time, video_frame[1]);
+    switch(video_frame[0]){
+      case CommandType.PRESS:
+        pressed = true;
+        ctx.moveTo(video_frame[2],video_frame[3]);
+      break;
+      case CommandType.MOVE:
+        if(pressed){
+          ctx.strokeStyle = '#00ff00';
+          ctx.lineTo(video_frame[2],video_frame[3]);
+          ctx.stroke();
+        }
+      case CommandType.RELEASE:
+        pressed = false;
+        ctx.moveTo(video_frame[2],video_frame[3]);
+      break;
+    }
+    current_event++;
+  }
+
+
+  /**
+   * @brief: Agendar a execução de uma função tão logo durante
+   *         um redesenho da tela. 
+   * API: requestAnimFrame(funcao). Execute-a dentro da propria 
+   *      `funcao` e você fará animação na página
+   *
+   * @param funcao Função que será executada no próximo redesenho
+   *               da tela.
+   * Chamando 
+   */
+  window.requestAnimFrame = (function(){
+    return window.requestAnimationFrame ||
+           window.webkitRequestAnimationFrame ||
+           window.mozRequestAnimationFrame ||
+           function(callback){
+             window.setTimeout(callback, 1000/60);
+           };
+  })();
+
+  /**
+   * @brief Get a response assynchronously (JSON, XML, File...).
+   * 
+   * 
+   * @method     get
+   * @param      {<type>}  url     { description }
+   * @return     {<type>}  { description_of_the_return_value }
+   */
+  function get(url){
+    return new Promise(function(resolve, reject){
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+      req.onload = function(){
+        if(req.status == 200){
+          resolve(req.response);
+        }else{
+          reject(Error(req.statusText));
+        }
+      };
+      req.onerror = function(){
+        reject(Error("Network Error"));
+      };
+      req.send();
+    });
+  }
+
 </script>
-{% endlanguage %}
 {% endblock %}

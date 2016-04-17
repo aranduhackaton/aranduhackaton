@@ -319,15 +319,15 @@ main.content{
   left: 8px;
   top: 10px;
 }
-#subnav .btn{
+.subnav .btn{
   padding-left: 0px;
   padding-right: 0px;
 }
-#subnav{
+.subnav{
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
-#subnav .container{
+.subnav .container{
   padding: 0px;
 }
 

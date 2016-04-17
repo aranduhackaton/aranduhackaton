@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 	  'api',
     'arandusite',
     'modeltranslation',
-    'rest_framework',
+    
 ]
 
 MIDDLEWARE_CLASSES = [
