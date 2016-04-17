@@ -1,0 +1,756 @@
+{% extends 'arandusite/base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+{% block content %}
+{% language user.userprofile.language.code %}
+
+<main class="content">
+
+        <header id="main-header">
+          <div class="breadcumb-section">
+            <div class="container">
+              <ul class="breadcrumb portal-text-9">
+                <li><a href="/">Home</a></li>
+                <li><a href="/learn/{{object.course.area.id}}">{{object.course.area.title}}</a></li>
+                <li><a href="/learn/{{object.course.area.id}}/{{object.course.id}}">{{object.course.title}}</a></li>
+                <li class="active">{{object.title}}</li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <div class="pad-sm container content-flex">
+
+          <div class="content-left column">
+            <div id="list-info" class="portal-panel green">
+              <div class="row">
+                <div id="list-name" class="col-sm-9">{{object.title}}</div>
+                <button class="btn btn-default btn-xs col-sm-3"><div class="price"><div class="unlock-by">unlock by</div><span>55<img src="{% static "img/arrowcoin2.svg" %}"></span></div></button>
+              </div>
+              
+              <div id="list-description">{{object.description}}</div>
+              
+            </div>
+            <div id="content-list" class="portal-panel no-title-padding">
+              <div class="list-group portal-text-9">
+                <a href="#" class="list-group-item active">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    </div>
+                  </div>
+                  <i class="fa fa-video-camera"></i> Canvas e Objetos 2D</a>
+                <a href="#" class="list-group-item disabled non-paid">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    </div>
+                  </div>
+                  <i class="fa fa-file-text"></i> Colorindo <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static 'img/arrowcoin2.svg' %} "></span></div></a>
+                <a href="#" class="list-group-item disabled non-paid">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                    </div>
+                  </div>
+                  <i class="fa fa-check-square-o"></i> Colorindo <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static 'img/arrowcoin2.svg' %}"></span></div></a>
+                <a href="#" class="list-group-item">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    </div>
+                  </div>
+                  <i class="fa fa-video-camera"></i> Objetos 3D</a>
+                <a href="#" class="list-group-item disabled non-paid">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    </div>
+                  </div>
+                  <i class="fa fa-video-camera"></i> Animação <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static "img/arrowcoin2.svg"%}"></span></div></a>
+                <a href="#" class="list-group-item disabled non-paid">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    </div>
+                  </div>
+                  <i class="fa fa-flask"></i> Textura <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static "img/arrowcoin2.svg" %}"></span></div></a>
+                <a href="#" class="list-group-item disabled non-paid">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    </div>
+                  </div>
+                  <i class="fa fa-gamepad"></i> Carregando Objetos Externos <span class="glyphicon glyphicon-lock"></span><div class="price btn btn-success"><div class="unlock-by">unlock by</div><span>10<img src="{% static "img/arrowcoin2.svg" %}"></span></div></a>
+                <a href="#" class="list-group-item">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    </div>
+                  </div>
+                  <i class="fa fa-music"></i> Sombras</a>
+                <a href="#" class="list-group-item">
+                  <div class="progress vertical-progressbar">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                    aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    </div>
+                  </div>
+                  <i class="fa fa-video-camera"></i> NURBS</a>
+              </div>
+            </div>
+          </div>
+          <div class="content-middle column">
+            <div id="list-user-info" class="">
+            </div>
+            <div id="index-skills" class="">
+            </div>
+            <div id="current-content" class="portal-panel no-title-padding">
+              <div class="title font-size-normal collapsed" data-toggle="collapse" data-target="#content-list-mobile">
+                Você está vendo <span class="caret"></span><span class="dropup"><span class="caret"></span></span><br><i class="fa fa-video-camera"></i> Canvas e Objetos 2D
+                
+              </div>
+              <div id="content-list-mobile" class="pad-sm content collapse">
+              </div>
+            </div>
+
+            
+            <div id="content-panel" class = "content portal-panel">
+              
+              <div class="content-video">
+                <canvas id="aranducanvas" width="960" height="540" style="background: red"/>
+              </div>
+              <div class="content-info">
+                <div class="content-info-text">
+                  <div class="content-title">Canvas e Objetos 2D</div>
+                  <div class="content-description">Veja por que computação gráfica foi concebido</div>
+                </div>
+                <div class="content-info-widgets">
+                  <div class="score">
+                    <div class="progress">
+                      <div class="progress-bar  progress-bar-striped active progress-bar-success" role="progressbar" aria-valuenow="40"
+                      aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                      <span id="score-value"><img src="{% static 'img/feather2.svg' %}" > 30/280</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="views"><i class="fa fa-eye"></i> 2.014.451</div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="portal-panel no-title-padding">
+              <div class="title"><i class="fa fa-graduation-cap"></i> Habilidades</div>
+              <div class="skills portal-text-9">
+                <div class="skill">
+                  <div class="skill-name">Visualização espacial</div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-filled"></div>
+                  </div>
+                </div>
+                <div class="skill">
+                  <div class="skill-name">Criar canvas em WebGL</div>
+                  <div class="skill-bar">
+                    <div class="skill-bar-filled"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="notes" class="portal-panel no-title-padding">
+              <div class="title font-size-normal " data-toggle="collapse" data-target="#annotations-widget"><i class="fa fa-pencil-square-o"></i> Anotações <span class="caret"></span><span class="dropup"><span class="caret"></span></span></div>
+              <div id="annotations-widget" class="pad-sm content collapse in">
+                <div id="annotations-description" class="portal-text-9">This is your space to support your study. Write anything that will help you.</div>
+                <!--<label for="annotation-preview-chk">Preview</label> <input type="checkbox" id="annotation-preview-chk" name="annotation-preview-chk" data-size="mini">-->
+                <ul class="nav nav-tabs">
+                      <li class="active"><a data-toggle="tab" href="#annotation-edit"><i class="fa fa-pencil"></i> Anotar</a></li>
+                      <li><a data-toggle="tab" href="#annotation-preview"><i class="fa fa-eye"></i> Previsualizar</a></li>
+                      <li><a data-toggle="tab" href="#annotation-info"><i class="fa fa-question-circle"></i> Ajuda</a></li>
+                </ul>
+                <div class="tab-content">
+                  <div id="annotation-edit" class="tab-pane fade in active">
+                    <textarea id="annotation-widget-input" name="comment" rows="4" placeholder="Escreva aqui suas anotações para esta atividade"></textarea>
+                  </div>
+                  <div id="annotation-preview" class="tab-pane fade in">
+                    <div class="preview" id="annotation-widget-preview"></div>
+                    <div class="preview" id="annotation-widget-buffer" 
+                         style="display:none;
+                                position:absolute; 
+                                top:0; left: 0"></div>
+                  </div>
+                  <div id="annotation-info" class="tab-pane fade in">
+                    <div class="annotations-info">
+                      <div class="row">
+                        <div id="annotations-info-edit" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 portal-text-9">
+                          When editing:
+                          <pre><code># Explanation
+You can write **bold**, __italic__ and list
+
+- with items
+- preceded by bullets
+
+1. or enumerated
+2. Good?
+[Links](http://aranduacademy.com) and ![images](static/img/logo-icon.png)
+```
+int main(){
+  printf("Hello!");
+}
+```
+$\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}$</code></pre>
+                        </div>
+
+                        <div id="annotations-info-preview" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 portal-text-9">
+                          It will be shown as:
+                          <h1>Explanation</h1>
+                          You can write <strong>bold</strong>, <i>italic</i> and list
+                          <ul>
+                            <li>with items</li>
+                            <li>preceded by bullets</li>
+                          </ul>
+                          <ol>
+                            <li>or enumerated</li>
+                            <li>Good?</li>
+                          </ol>
+                          <a href="http://aranduacademy.com">Links</a> and <img src="static/img/logo-icon.png"/>
+                          <pre>
+  int main(){
+    printf("Hello!");
+  }</pre>
+                          <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">∂</mi><mi>x</mi></mrow></mfrac><mo>=</mo><munder><mo movablelimits="true" form="prefix">lim</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="normal">Δ</mi><mi>x</mi><mo stretchy="false">→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow></mfrac></math>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+            </div>
+
+            <div class="portal-panel no-title-padding">
+              <div class="title font-size-normal" data-toggle="collapse" data-target="#lists-computer-graphics"><i class="fa fa-comment"></i> Comentários
+                <span class="caret"></span><span class="dropup"><span class="caret"></span></span>
+                <span class="badge">5</span>
+              </div>
+
+              <div id="lists-computer-graphics" class="pad-sm content in collapse">
+                <div>
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Perguntas</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Agradecimentos</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Relatar</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Regras</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                      <ul class="media-list comments">
+                        <li class="media">
+                          <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="static/img/photo.png" alt="...">
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <a href="/profile/anderflash"><h6 class="media-heading">Anderson Carlos Moreira Tavares</h6></a>
+                            <div class="comment-date">6 days ago</div>
+                            Achei muito legal esse vídeo, mas não entendi a parte da fração. Você pode me ajudar?
+                            <div class="comment-tools">
+                              <span class="comment-tool comment-tool-vote">
+                                <span class="vote-number">35 votes</span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              </span>
+                              <span class="comment-tool comment-tool-answer">
+                                <a href="#">Answer</a>
+                              </span>
+                              <span class="comment-tool comment-tool-flag">
+                                <a href="#">Flag</a>
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="static/img/photo.png" alt="...">
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <a href="/profile/anderflash"><h6 class="media-heading">Anderson Carlos Moreira Tavares</h6></a>
+                            <div class="comment-date">6 days ago</div>
+                            Achei muito legal esse vídeo, mas não entendi a parte da fração. Você pode me ajudar?
+                            <div class="comment-tools">
+                              <span class="comment-tool comment-tool-vote">
+                                <span class="vote-number">35 votes</span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              </span>
+                              <span class="comment-tool comment-tool-answer">
+                                <a href="#">Answer</a>
+                              </span>
+                              <span class="comment-tool comment-tool-flag">
+                                <a href="#">Flag</a>
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="static/img/photo.png" alt="...">
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <a href="/profile/anderflash"><h6 class="media-heading">Anderson Carlos Moreira Tavares</h6></a>
+                            <div class="comment-date">6 days ago</div>
+                            Achei muito legal esse vídeo, mas não entendi a parte da fração. Você pode me ajudar?
+                            <div class="comment-tools">
+                              <span class="comment-tool comment-tool-vote">
+                                <span class="vote-number">35 votes</span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              </span>
+                              <span class="comment-tool comment-tool-answer">
+                                <a href="#">Answer</a>
+                              </span>
+                              <span class="comment-tool comment-tool-flag">
+                                <a href="#">Flag</a>
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="media">
+                          <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="static/img/photo.png" alt="...">
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <a href="/profile/anderflash"><h6 class="media-heading">Anderson Carlos Moreira Tavares</h6></a>
+                            <div class="comment-date">6 days ago</div>
+                            Achei muito legal esse vídeo, mas não entendi a parte da fração. Você pode me ajudar?
+                            <div class="comment-tools">
+                              <span class="comment-tool comment-tool-vote">
+                                <span class="vote-number">35 votes</span>
+                                <span class="glyphicon glyphicon-triangle-top"></span>
+                                <span class="glyphicon glyphicon-triangle-bottom"></span>
+                              </span>
+                              <span class="comment-tool comment-tool-answer">
+                                <a href="#">Answer</a>
+                              </span>
+                              <span class="comment-tool comment-tool-flag">
+                                <a href="#">Flag</a>
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="comment-input">
+                        <div class="comment-picture"><img src="static/img/photo.png"></div>
+                        <div id="comments-widget" class="form-group">
+                          <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#comment-edit">Edit</a></li>
+                            <li><a data-toggle="tab" href="#comment-preview">Preview</a></li>
+                            <li><a data-toggle="tab" href="#comment-info">Hints</a></li>
+                          </ul>
+                          <div class="tab-content">
+                            <div id="comment-edit" class="tab-pane fade in active">
+                              <textarea class="form-control portal-text-9" rows="3" id="comments-widget-input" placeholder="Ask your question here"></textarea>
+                            </div>
+                            <div id="comment-preview" class="tab-pane fade in">
+                              <div class="preview" id="comments-widget-preview"></div>
+                              <div class="preview" id="comments-widget-buffer" 
+                                   style="display:none;
+                                          position:absolute; 
+                                          top:0; left: 0"></div>
+                            </div>
+                            <div id="comment-info" class="tab-pane fade in">
+                              <div class="annotations-info">
+                                <div class="row">
+                                  <div id="comments-info-edit" class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                    When editing:
+                                    <pre>
+  <code># Explanation
+  You can write **bold**, __italic__ and list
+
+  - with items
+  - preceded by bullets
+
+  1. or enumerated
+  2. Good?
+  [Links](http://aranduacademy.com) and ![images](static/img/logo-icon.png)
+  ```
+  int main(){
+    printf("Hello!");
+  }
+  ```
+  $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}$</code>
+
+                                    </pre>
+                                  </div>
+
+                                  <div id="comments-info-preview" class="col-xs-12 col-sm-6  col-md-6 col-lg-6">
+                                    It will be shown as:
+                                    <h1>Explanation</h1>
+                                    You can write <strong>bold</strong>, <i>italic</i> and list
+                                    <ul>
+                                      <li>with items</li>
+                                      <li>preceded by bullets</li>
+                                    </ul>
+                                    <ol>
+                                      <li>or enumerated</li>
+                                      <li>Good?</li>
+                                    </ol>
+                                    <a href="http://aranduacademy.com">Links</a> and <img src="static/img/logo-icon.png"/>
+                                    <pre>
+  int main(){
+    printf("Hello!");
+  }</pre>
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">∂</mi><mi>x</mi></mrow></mfrac><mo>=</mo><munder><mo movablelimits="true" form="prefix">lim</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="normal">Δ</mi><mi>x</mi><mo stretchy="false">→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi mathvariant="normal">Δ</mi><mi>x</mi><mo stretchy="false">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow></mfrac></math>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" class="btn btn-success btn-sm margin-top-sm">Ask the question</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                      <h3>Menu 1</h3>
+                      <p>Some content in menu 1.</p>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                      <h3>Menu 2</h3>
+                      <p>Some content in menu 2.</p>
+                      <p>Some content in menu 2.</p>
+                      <p>Some content in menu 2.</p>
+                      <p>Some content in menu 2.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-right column">
+            <div id="you-have" class="portal-panel no-title-padding">
+              <div class="title"><i class="fa fa-user"></i> Você tem</div>
+              <span class="center-flex flex-row">
+                <span class="center-flex flex-row"><img src="{% static 'img/feather2.svg' %}"> <span class="center-flex flex-column"><span>53.234</span><span class="portal-text-9">pontos</span> </span></span>
+                <span class="center-flex flex-row"><img src="{% static 'img/arrowcoin2.svg' %}"><span class="center-flex flex-column"><span>120</span><span class="portal-text-9">flechas</span></span> </span>  
+              </span>
+              
+            </div>
+          </div>
+
+
+          
+          
+          
+        </div>
+      </main>
+
+
+
+<div class="container">
+  <div class="panel">
+    <h1>{{object.title}}</h1>
+
+    <ul>
+    {% for learninglist in object.learninglist_set.all %}
+      <li><a href="/learn/{{object.area.id}}/{{object.id}}/{{learninglist.id}}">{{learninglist.title}}</li></a>
+    {% endfor %}
+    </ul>
+  </div>  
+</div>
+
+
+{% endlanguage %}
+{% endblock %}
+
+{% block script-extra %}
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="{% static 'js/marked.min.js' %} "></script>
+<script type="text/javascript" src="{% static 'js/markdown.js' %} "></script>
+<script>
+
+  var CommandType = {
+    PRESS: 1,
+    MOVE: 2,
+    RELEASE: 3,
+    CHANGE_COLOR: 4,
+    SET_WIDTH: 5
+  };
+
+
+  var skills_position = -1;
+  var notes_position = -1;
+  var user_info_position = -1;
+  var list_info_position = -1;
+  var content_list_position = -1;
+
+  MathJax.Hub.Config({
+    showProcessingMessages: false,
+    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] },
+    TeX: { equationNumbers: {autoNumber: "AMS"} }
+  });
+  $(function () {
+    $("[data-toggle = 'tooltip']").tooltip(); 
+    //$(".pagination").rPage();
+    var preview_notes = new Preview();
+    var preview_comments = new Preview();
+    preview_notes.Init("annotation-widget-preview",
+                 "annotation-widget-buffer",
+                 "annotation-widget-input");
+    preview_notes.Update();
+    preview_comments.Init("comments-widget-preview",
+                 "comments-widget-buffer",
+                 "comments-widget-input");
+    preview_comments.Update();
+
+    $('#annotations-widget > .nav li > a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var target = $(e.target).attr("href") // activated tab
+      if(target == "#annotation-preview"){
+        preview_notes.Update();
+      }
+    });
+    $('#comments-widget > .nav li > a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+      var target = $(e.target).attr("href") // activated tab
+      if(target == "#comment-preview"){
+        preview_comments.Update();
+      }
+    });
+    //$("#annotation-preview-chk").bootstrapSwitch();
+
+    var skills = $(".portal-panel .skills").parent();
+    var notes = $("#notes");
+    var list_info = $("#list-info");
+    var user_info = $("#you-have");
+    var content_left= $(".content-left");
+    var content_right= $(".content-right");
+    var content_middle= $(".content-middle");
+    var content_list = $("#content-list");
+    var content_list_mobile = $("#content-list-mobile");
+    var current_content = $("#current-content");
+    var list_user_info = $("#list-user-info");
+    var index_skills = $("#index-skills");
+
+    
+    var window_width;
+
+    function place_notes(){
+      if(window_width <= 400 && notes_position != 3){
+        notes.insertBefore(content_middle.children().last());
+        notes_position = 3;
+      }
+      else if(window_width > 400 && window_width <= 768 && notes_position != 1){
+        notes.insertBefore(content_middle.children().last());
+        notes_position = 1;
+      }
+      else if(window_width > 768 && window_width <= 990 && notes_position != 0){
+        content_left.append(notes);
+        notes_position = 0;
+      }
+      else if(window_width > 990 && notes_position != 2){
+        content_right.append(notes);
+        notes_position = 2;
+      }
+    }
+    function place_skills(){
+      if(window_width <= 400 && skills_position != 1){
+        skills.insertAfter(content_middle.children().eq(3));
+        skills_position = 1;
+      }
+      else if(window_width > 400 && window_width <= 768 && skills_position != 3){
+        index_skills.prepend(skills);
+        skills_position = 3;
+      }
+      else if(window_width > 768 && window_width <= 990 && skills_position != 0){
+        content_left.append(skills);
+        skills_position = 0;
+      }
+      else if(window_width > 990 && skills_position != 2){
+        content_right.append(skills);
+        skills_position = 2;
+      }
+    }
+    function place_list_info(){
+      if(window_width <= 400 && list_info_position != 1){
+        content_middle.prepend(list_info);
+        list_info_position = 1;
+      }
+      else if(window_width > 400 && window_width <= 768 && list_info_position != 3){
+        list_user_info.prepend(list_info);
+        list_info_position = 3;
+      }
+      else if(window_width > 768 && list_info_position != 0){
+        content_left.prepend(list_info);
+        list_info_position = 0;
+      }
+    }
+    function place_user_info(){
+      if(window_width <= 400 && user_info_position != 1){
+        content_middle.prepend(user_info);
+        user_info_position = 1
+      }
+      else if(window_width > 400 && window_width <= 768 && user_info_position != 3){
+        list_user_info.prepend(user_info);
+        user_info_position = 3;
+      }
+      else if(window_width > 990 && user_info_position != 2){
+        content_right.prepend(user_info);
+        user_info_position = 2;
+      }
+      else if(window_width > 768 && window_width <= 990 && user_info_position != 0){
+        content_left.prepend(user_info);
+        user_info_position = 0;
+      }
+    }
+    function place_content_list(){
+      if(window_width <= 400 && content_list_position != 1){
+        content_middle.prepend(current_content);
+        content_list_mobile.append(content_list);
+        content_list_position = 1;
+      }
+      else if(window_width > 400 && window_width <= 768 && content_list_position != 3){
+        index_skills.prepend(current_content);
+        content_list_mobile.append(content_list);
+        content_list_position = 3;
+      }
+      else if(window_width > 768 && content_list_position != 0){
+        content_left.prepend(content_list);
+        content_list_position = 0;
+      } 
+    }
+    function replace_notes_skills(){
+      window_width = $( window ).width();
+      place_skills();
+      place_notes();
+      place_content_list();
+      place_list_info();
+      place_user_info();
+      
+    }
+    $(window).resize(replace_notes_skills);
+    replace_notes_skills();
+    
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: false,
+      pedantic: false,
+      sanitize: false, // IMPORTANT, because we do MathJax before markdown,
+                       //            however we do escaping in 'CreatePreview'.
+      smartLists: true,
+      smartypants: false
+    });
+
+    var canvas = document.getElementById("aranducanvas");
+    var ctx = canvas.getContext('2d');
+
+    var video_data = [[CommandType.PRESS,     0,  25, 33],
+                      [CommandType.MOVE,   1000, 200,300],
+                      [CommandType.MOVE,   2000, 420,330],
+                      [CommandType.MOVE,   3000, 600,200],
+                      [CommandType.RELEASE,4050, 600,200]];
+    //get("dados.ads").then(function(data){
+
+    //});
+    canvas.addEventListener("mouseup", function(event){
+      startPlaying(canvas, ctx, video_data);
+    });
+    
+  });
+
+  var canvas, ctx, video_data;
+  var current_event, current_time, start_time;
+  var animando = true;
+  function startPlaying(_canvas, _ctx, _video_data){
+    canvas = _canvas;
+    ctx = _ctx;
+    video_data = _video_data;
+    current_event = 0;
+    start_time = new Date().getTime();
+
+    tick();
+  }
+
+  function tick(){
+    if(animando)
+      requestAnimFrame(tick);
+    current_time = new Date().getTime();
+    if(current_time - start_time > video_data[current_event][1] && video_data.length < current_event){
+      desenhar();
+    }
+  }
+  var pressed = false;
+  function desenhar(){
+    var video_frame = video_data[current_event];
+    console.log(video_frame[0], current_time, video_frame[1]);
+    switch(video_frame[0]){
+      case CommandType.PRESS:
+        pressed = true;
+        ctx.moveTo(video_frame[2],video_frame[3]);
+      break;
+      case CommandType.MOVE:
+        if(pressed){
+          ctx.strokeStyle = '#00ff00';
+          ctx.lineTo(video_frame[2],video_frame[3]);
+          ctx.stroke();
+        }
+      case CommandType.RELEASE:
+        pressed = false;
+        ctx.moveTo(video_frame[2],video_frame[3]);
+      break;
+    }
+    current_event++;
+  }
+
+
+  /**
+   * @brief: Agendar a execução de uma função tão logo durante
+   *         um redesenho da tela. 
+   * API: requestAnimFrame(funcao). Execute-a dentro da propria 
+   *      `funcao` e você fará animação na página
+   *
+   * @param funcao Função que será executada no próximo redesenho
+   *               da tela.
+   * Chamando 
+   */
+  window.requestAnimFrame = (function(){
+    return window.requestAnimationFrame ||
+           window.webkitRequestAnimationFrame ||
+           window.mozRequestAnimationFrame ||
+           function(callback){
+             window.setTimeout(callback, 1000/60);
+           };
+  })();
+
+  /**
+   * @brief Get a response assynchronously (JSON, XML, File...).
+   * 
+   * 
+   * @method     get
+   * @param      {<type>}  url     { description }
+   * @return     {<type>}  { description_of_the_return_value }
+   */
+  function get(url){
+    return new Promise(function(resolve, reject){
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+      req.onload = function(){
+        if(req.status == 200){
+          resolve(req.response);
+        }else{
+          reject(Error(req.statusText));
+        }
+      };
+      req.onerror = function(){
+        reject(Error("Network Error"));
+      };
+      req.send();
+    });
+  }
+
+</script>
+{% endblock %}

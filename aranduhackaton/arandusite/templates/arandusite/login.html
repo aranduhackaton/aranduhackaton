@@ -1,0 +1,43 @@
+{% extends "arandusite/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %} 
+        <section id="login-section" class="limited centered">
+        
+        <div id="login-non-social-presentation" class="arandu-presentation">Você já está autenticado</div>
+        <input class="form-submit" type="submit" name="submit" value="Sair" />
+        </section>
+    {% else %}
+        <section id="login-section" class="limited centered">
+            <section id="login-social" class="portal-panel">
+                <div id="login-social-presentation" class="arandu-presentation">Entre no Arandu Academy com</div>
+                <div id="login-social-networks">
+                    <div class="social-network background-facebook"><a href="facebook">Facebook</a></div>
+                    <div class="social-network background-google"><a href="google">Google</a></div>
+                    <div class="social-network background-linkedin"><a href="linkedin">Linkedin</a></div>
+                    <div class="social-network background-twitter"><a href="twitter">Twitter</a></div>
+                </div>
+                <div id="login-social-never-post">Nunca postaremos sem sua permissão
+                </div>
+            </section>
+            <div class="arandu-or">ou</div>
+            <section id="login-non-social" class="portal-panel">
+                <div id="login-non-social-presentation" class="arandu-presentation">Use a conta do Arandu Academy</div>
+                <form id="user_form" name="LoginForm" method="post" action="login/"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <!-- Display each form. The as_p method wraps each element in a paragraph
+                         (<p>) element. This ensures each element appears on a new line,
+                         making everything look neater. -->
+                    {{ form.as_p }}
+
+                    <!-- Provide a button to click to submit the form. -->
+                    <input class="form-submit" type="submit" name="submit" value="Entrar" />
+                    <input name="next" type="hidden" value="{{next}}">
+                </form>
+            </section>
+                
+            
+        </section>
+    {% endif %}
+{% endblock %}

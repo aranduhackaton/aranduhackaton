@@ -1,0 +1,18 @@
+{% load i18n %}
+{% language user.userprofile.language.code %}
+<div class="container">
+  <div class="btn-group btn-group-sm btn-group-justified">
+    <a role="button" class="subnav-item-link btn btn-default {% if active_subnav == 'main' %} active{% endif %}" href="{% url 'arandusite:main' %}">
+      <span class="glyphicon glyphicon-home"></span> <span class="subnav-item {% if active_subnav == 'main' %} subnav-active{% endif %}">{% trans 'Home' %}</span></a>
+    <a role="button" class="subnav-item-link btn btn-default {% if active_subnav == 'profile' %} active{% endif %}" href="{% url 'arandusite:profile' %}">
+      <span class="glyphicon glyphicon-user"></span><span class="subnav-item {% if active_subnav == 'profile' %}   subnav-active{% endif %}">{% trans 'Profile' %}</span></a>
+    <a role="button" class="subnav-item-link btn btn-default {% if active_subnav == 'badges' %} active{% endif %}" href="{% url 'arandusite:badges' %}">
+      <i class="fa fa-certificate"></i> <span class="subnav-item {% if active_subnav == 'badges' %}     subnav-active{% endif %}">{% trans 'Badges' %}</span></a>
+    <a role="button" class="subnav-item-link btn btn-default {% if active_subnav == 'progress' %} active{% endif %}" href="{% url 'arandusite:progress' %}">
+      <span class="glyphicon glyphicon-tasks"></span> <span class="subnav-item {% if active_subnav == 'progress' %} subnav-active{% endif %}">{% trans 'Progress' %}</span></a>
+    <a role="button" class="subnav-item-link btn btn-default {% if active_subnav == 'groups' %} active{% endif %}" href="{% url 'arandusite:groups' %}">
+      <i class="fa fa-users"></i> <span class="subnav-item {% if active_subnav == 'groups' %}     subnav-active{% endif %}">{% trans 'Groups' %}</span></a>
+  </div>
+</div>
+
+{% endlanguage %}

@@ -1,0 +1,31 @@
+{% extends "arandusite/main_base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% block subnav %}
+  {% include "arandusite/subnav.html" with active_subnav='main' %}  
+{% endblock %}
+{% block subcontent %}
+{% language user.userprofile.language.code %}
+
+  <div class="container">
+    <div class="arandusite-panel">
+      <div class="title font-size-normal">{% trans 'Resume learning' %}</div>
+      <div class="content">
+        Teste
+      </div>
+    </div>
+    <div class="arandusite-panel">
+      <div class="title font-size-normal">{% trans 'Recomendations' %}</div>
+      <div class="content">
+        Teste
+      </div>
+    </div>
+    <div class="arandusite-panel">
+      <div class="title font-size-normal">{% trans 'Interesting topics' %}</div>
+      <div class="content">
+        Teste
+      </div>
+    </div>
+  </div>
+{% endlanguage %}  
+{% endblock %}

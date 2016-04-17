@@ -1,0 +1,12 @@
+{% extends "arandusite/base.html" %}
+{% load i18n %}
+
+{% block content %}
+{% language user.userprofile.language.code %}
+  <form class="portal-panel" action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="{% trans 'Update' %}"/>
+  </form>
+{% endlanguage %}
+{% endblock %}

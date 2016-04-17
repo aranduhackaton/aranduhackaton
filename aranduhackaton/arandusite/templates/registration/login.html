@@ -1,0 +1,40 @@
+{% extends "arandusite/base.html" %}
+{% load i18n %}
+
+{% block content %}
+  {% if user.is_authenticated %} 
+    <section id="login-section" class="container centered">
+    
+    <div id="login-non-social-presentation" class="arandu-presentation">Você já está autenticado</div>
+    <input class="form-submit" type="submit" name="submit" value="Sair" />
+    </section>
+  {% else %}
+    <section id="login-section" class="container centered">
+      <section id="login-social" class="arandu-panel margin-small">
+        <div id="login-social-presentation" class="arandu-presentation">Entre no Arandu Academy com</div>
+        <div id="login-social-networks">
+            <div class="social-network background-facebook"><a href="facebook">Facebook</a></div>
+            <div class="social-network background-google"><a href="google">Google</a></div>
+            <div class="social-network background-linkedin"><a href="linkedin">Linkedin</a></div>
+            <div class="social-network background-twitter"><a href="twitter">Twitter</a></div>
+        </div>
+        <div id="login-social-never-post">Nunca postaremos sem sua permissão
+        </div>
+      </section>
+      <div class="arandu-or">ou</div>
+      <section id="login-non-social" class="arandu-panel margin-small">
+        <div id="login-non-social-presentation" class="arandu-presentation">Use a conta do Arandu Academy</div>
+        <form id="user_form" name="LoginForm" method="post" action=".">
+          {% csrf_token %} 
+          {{ form.as_p }}
+
+          <input type="submit" class="form-submit" value="{% trans 'Log in' %}" />
+          <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+
+        <p>{% trans "Forgot password" %}? <a href="{% url 'arandusite:auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+        <p>{% trans "Not member" %}? <a href="{% url 'arandusite:registration_register' %}">{% trans "Register" %}</a>!</p>
+      </section>
+    </section>
+  {% endif %}
+{% endblock %}
