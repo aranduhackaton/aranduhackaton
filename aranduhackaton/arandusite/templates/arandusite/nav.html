@@ -1,0 +1,21 @@
+{% load staticfiles %}
+{% load i18n %} 
+<nav class="navbar navbar-static-top navbar-default navbar-white shadow-big">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'arandusite:main' %}">
+        <img id="arandusite-logo-horizontal" src="{% static "img/logo-horizontal-small.png" %}"/>
+      </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse" aria-expanded="false">
+      {% include "arandusite/nav_right.html" %}
+      {% include "arandusite/nav_search.html" %}
+    </div>
+  </div>
+</nav>

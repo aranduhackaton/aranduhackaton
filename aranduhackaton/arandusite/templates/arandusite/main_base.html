@@ -1,0 +1,38 @@
+{% extends "arandusite/base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% language user.userprofile.language.code %}
+{% block content %}
+  {% if not user.is_authenticated %}
+    {% include "arandusite/non_logged.html" %}
+  {% else %}
+    <header>
+    {% block mainheader %}
+      <div id="mainheader">
+        <div id="mainheader-container">
+          <span id="mainheaderavatar">
+            <img id="mainheaderavatar-picture" src="{{user.userprofile.picture.url}}"/>
+          </span>
+          <div id="user-complete-name">
+            {{user.first_name}} {{user.last_name}}
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+    <nav class="subnav">
+      <div class="subnav-container">
+        <div class="subnav-centered">
+          <span id="subnav-itens">
+            {% block subnav %}{% endblock %}
+          </span>
+        </div>
+      </div>
+    </nav>
+    
+    </header>
+    {% block subcontent %}
+    {% endblock %}
+  {% endif %}
+
+{% endblock %}
+{% endlanguage %}

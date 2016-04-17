@@ -1,0 +1,10 @@
+{% load i18n %} 
+<ul class="nav navbar-nav navbar-right">
+  <li>
+    {% if user.is_authenticated %}
+      {% include "arandusite/nav_right_user.html" %}
+    {% else %}
+      {% include "arandusite/nav_right_non_user.html" %}
+    {% endif %}
+  </li>
+</ul>

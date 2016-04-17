@@ -1,0 +1,42 @@
+{% load i18n %}
+{% language user.userprofile.language.code %}
+<div class="btn-group" id="nav-user-group" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span class="badge">400</span></button>
+    <div class="dropdown-menu">
+      Notificações
+    </div>
+  </div>
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bullhorn"></span><span class="badge">400</span></button>
+    <div class="dropdown-menu">
+      Notificações
+    </div>
+  </div>
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-bell"></span><span class="badge">400</span></button>
+    <div class="dropdown-menu">
+      Notificações
+    </div>
+  </div>
+
+  <div class="btn-group" role="group">
+    <button id="nav-user-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{user.first_name}} <span class="caret"></span>
+      <img id="nav-user-picture" src="{{user.userprofile.picture.url}}"/>
+    </button>
+    <ul class="dropdown-menu">
+      {% if user.is_staff %}
+      <li><a href="/admin"><span class="glyphicon glyphicon-pencil"></span> {% trans "Site Managing" %}</a></li>
+      {% endif %}
+      <li><a href="{% url 'arandusite:profile' %}/{{user.username}}"><span class="glyphicon glyphicon-home"></span> {% trans "Profile" %}</a></li>
+      <li><a href="{% url 'arandusite:settings' %}"><span class="glyphicon glyphicon-cog"></span> {% trans "Settings" %}</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="{%url 'arandusite:auth_logout' %}?next=/"><span class="glyphicon glyphicon-log-out"></span> {% trans "Exit" %}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endlanguage %}

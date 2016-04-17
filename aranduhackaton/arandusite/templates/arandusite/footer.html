@@ -1,0 +1,12 @@
+{% load staticfiles %}
+<footer id="arandusite-footer" class="footer">
+  <section id="">
+    <div id="arandusite-footer-title">INSTITUCIONAL</div>
+    <a href="{% url 'arandusite:mission' %}">Missão</a>
+    <a href="{% url 'arandusite:staff' %}">Equipe</a>
+    <a href="{% url 'arandusite:about' %}">Sobre Arandu</a>
+  </section>
+  <section id="">
+    <img id="arandusite-footer-logo" src="{% static "arandusite/img/logo-vertical.png" %}"/>
+  </section>
+</footer>
