@@ -36,6 +36,9 @@ class DrawingStream{
     this.playing              = false;
     this.recording_start_time = 0;
     this.current_color        = null;
+    this.current_event        = 0;
+    this.start_time           = 0;
+    this.pressed              = false;
   }
   /**
    * Get context
@@ -45,7 +48,7 @@ class DrawingStream{
    */
   init(namecanvas){
     this.canvas = document.getElementById(namecanvas);
-    this.ctx = canvas.getContext('2d');
+    this.ctx = this.canvas.getContext('2d');
   }
 
   /**
@@ -83,7 +86,7 @@ class DrawingStream{
   }
 
   downListener(event){
-    this.data.push([CommandType.PRESS  , new Date().getTime() - this.recording_start_time, this.posX, this.posY]);
+    this.data.push([CommandType.PRESS  , new Date().getTime() - this.recording_start_time, this.posX(event.clientX), this.posY(event.clientY)]);
   }
   upListener(event){
     this.data.push([CommandType.RELEASE, new Date().getTime() - this.recording_start_time, this.posX, this.posY]);
@@ -91,11 +94,11 @@ class DrawingStream{
   moveListener(event){
     this.data.push([CommandType.MOVE   , new Date().getTime() - this.recording_start_time, this.posX, this.posY]);
   }
-  get posX(X, divcanvas){
-    return X - this.canvas.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft + divcanvas.scrollLeft;
+  posX(X){
+    return X - this.canvas.offsetLeft + document.body.scrollLeft + document.documentElement.scrollLeft;
   }
-  get posY(Y, divcanvas){
-    return Y - canvas.offsetTop + document.body.scrollTop + document.documentElement.scrollTop + divcanvas.scrollTop;
+  posY(Y){
+    return Y - canvas.offsetTop + document.body.scrollTop + document.documentElement.scrollTop;
   }
   
   /**
@@ -106,21 +109,25 @@ class DrawingStream{
   play(){
     if(!this.playing){
       this.playing = true;
+      this.start_time = new Date().getTime();
+      this.current_event = 0;
       this.tick();
     }
   }
 
   tick(){
     if(this.playing)
-      requestAnimationFrame(tick);
-    current_time = new Date().getTime();
-    if(current_time - start_time > video_data[current_event][1] && video_data.length < current_event){
-      desenhar();
+      requestAnimationFrame(this.tick.bind(this));
+    this.current_time = new Date().getTime();
+    var duration = this.current_time - this.start_time;
+    //console.log(this.current_time, this.start_time, duration, this.data[this.current_event][1]);
+    if(this.data.length > this.current_event && duration > this.data[this.current_event][1]){
+      this.draw();
     }
   }
 
   stop(){
-    this(!this.playing){
+    if(!this.playing){
       this.playing = false;
     }
   }
@@ -133,6 +140,30 @@ class DrawingStream{
    */
   seek(timestamp){
 
+  }
+
+  draw(){
+    var video_frame = this.data[this.current_event];
+    console.log(this.current_time, video_frame);
+    switch(video_frame[0]){
+      case CommandType.PRESS:
+        this.pressed = true;
+        this.ctx.moveTo(video_frame[2],video_frame[3]);
+      break;
+      case CommandType.MOVE:
+        console.log(this.pressed);
+        if(this.pressed){
+          this.ctx.strokeStyle = '#00ff00';
+          this.ctx.lineTo(video_frame[2],video_frame[3]);
+          this.ctx.stroke();
+        }
+      break;
+      case CommandType.RELEASE:
+        this.pressed = false;
+        this.ctx.moveTo(video_frame[2],video_frame[3]);
+      break;
+    }
+    this.current_event++;
   }
   
 }

@@ -14,6 +14,7 @@
                 <li><a href="/learn/{{object.course.area.id}}">{{object.course.area.title}}</a></li>
                 <li><a href="/learn/{{object.course.area.id}}/{{object.course.id}}">{{object.course.title}}</a></li>
                 <li class="active">{{object.title}}</li>
+                <li><a href="/learn/{{object.course.area.id}}/{{object.course.id}}/new">New Video</a></li>
               </ul>
             </div>
           </div>
@@ -116,7 +117,7 @@
             <div id="content-panel" class = "content portal-panel">
               
               <div class="content-video">
-                <canvas id="aranducanvas" width="960" height="540" style="background: red"/>
+                <canvas id="aranducanvas" width="960" height="540" style=""/>
               </div>
               <div class="content-info">
                 <div class="content-info-text">
@@ -470,17 +471,10 @@ $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \De
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript" src="{% static 'js/marked.min.js' %} "></script>
 <script type="text/javascript" src="{% static 'js/markdown.js' %} "></script>
+<script type="text/javascript" src="{% static 'js/lousadigital.js' %} "></script>
 <script>
 
-  var CommandType = {
-    PRESS: 1,
-    MOVE: 2,
-    RELEASE: 3,
-    CHANGE_COLOR: 4,
-    SET_WIDTH: 5
-  };
-
-
+  
   var skills_position = -1;
   var notes_position = -1;
   var user_info_position = -1;
@@ -645,66 +639,62 @@ $\frac{\partial f(x)}{\partial x} = \lim_{\Delta x\rightarrow 0} \frac{f(x + \De
       smartypants: false
     });
 
-    var canvas = document.getElementById("aranducanvas");
-    var ctx = canvas.getContext('2d');
-
-    var video_data = [[CommandType.PRESS,     0,  25, 33],
-                      [CommandType.MOVE,   1000, 200,300],
-                      [CommandType.MOVE,   2000, 420,330],
-                      [CommandType.MOVE,   3000, 600,200],
-                      [CommandType.RELEASE,4050, 600,200]];
-    //get("dados.ads").then(function(data){
-
-    //});
-    canvas.addEventListener("mouseup", function(event){
-      startPlaying(canvas, ctx, video_data);
-    });
-    
+    var drawing_stream = new DrawingStream();
+    drawing_stream.init("aranducanvas");
+    drawing_stream.data = [[CommandType.PRESS,     0,  25, 33],
+                           [CommandType.MOVE,   1000, 200,300],
+                           [CommandType.MOVE,   2000, 420,330],
+                           [CommandType.MOVE,   3000, 600,200],
+                           [CommandType.RELEASE,4050, 600,200],
+                           [CommandType.PRESS,  4200, 400, 33],
+                           [CommandType.MOVE,   4500, 450,100],
+                           [CommandType.RELEASE,4600, 450,100]];
+    drawing_stream.play();
   });
 
-  var canvas, ctx, video_data;
-  var current_event, current_time, start_time;
-  var animando = true;
-  function startPlaying(_canvas, _ctx, _video_data){
-    canvas = _canvas;
-    ctx = _ctx;
-    video_data = _video_data;
-    current_event = 0;
-    start_time = new Date().getTime();
+  // var canvas, ctx, video_data;
+  // var current_event, current_time, start_time;
+  // var animando = true;
+  // function startPlaying(_canvas, _ctx, _video_data){
+  //   canvas = _canvas;
+  //   ctx = _ctx;
+  //   video_data = _video_data;
+  //   current_event = 0;
+  //   start_time = new Date().getTime();
 
-    tick();
-  }
+  //   tick();
+  // }
 
-  function tick(){
-    if(animando)
-      requestAnimFrame(tick);
-    current_time = new Date().getTime();
-    if(current_time - start_time > video_data[current_event][1] && video_data.length < current_event){
-      desenhar();
-    }
-  }
-  var pressed = false;
-  function desenhar(){
-    var video_frame = video_data[current_event];
-    console.log(video_frame[0], current_time, video_frame[1]);
-    switch(video_frame[0]){
-      case CommandType.PRESS:
-        pressed = true;
-        ctx.moveTo(video_frame[2],video_frame[3]);
-      break;
-      case CommandType.MOVE:
-        if(pressed){
-          ctx.strokeStyle = '#00ff00';
-          ctx.lineTo(video_frame[2],video_frame[3]);
-          ctx.stroke();
-        }
-      case CommandType.RELEASE:
-        pressed = false;
-        ctx.moveTo(video_frame[2],video_frame[3]);
-      break;
-    }
-    current_event++;
-  }
+  // function tick(){
+  //   if(animando)
+  //     requestAnimFrame(tick);
+  //   current_time = new Date().getTime();
+  //   if(current_time - start_time > video_data[current_event][1] && video_data.length < current_event){
+  //     desenhar();
+  //   }
+  // }
+  // var pressed = false;
+  // function desenhar(){
+  //   var video_frame = video_data[current_event];
+  //   console.log(video_frame[0], current_time, video_frame[1]);
+  //   switch(video_frame[0]){
+  //     case CommandType.PRESS:
+  //       pressed = true;
+  //       ctx.moveTo(video_frame[2],video_frame[3]);
+  //     break;
+  //     case CommandType.MOVE:
+  //       if(pressed){
+  //         ctx.strokeStyle = '#00ff00';
+  //         ctx.lineTo(video_frame[2],video_frame[3]);
+  //         ctx.stroke();
+  //       }
+  //     case CommandType.RELEASE:
+  //       pressed = false;
+  //       ctx.moveTo(video_frame[2],video_frame[3]);
+  //     break;
+  //   }
+  //   current_event++;
+  // }
 
 
   /**

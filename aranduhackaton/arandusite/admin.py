@@ -4,6 +4,7 @@ from arandusite.models          import UserProfile
 from arandusite.models          import Area
 from arandusite.models          import Course
 from arandusite.models          import LearningList
+from arandusite.models          import LearningItem
 from arandusite.models          import LearningVideo
 from arandusite.models          import Skill
 from arandusite.models          import ProfessionalProfile
@@ -22,6 +23,9 @@ class AreaCourseInline(admin.TabularInline):
 class CourseLearningListInline(admin.TabularInline):
   model = LearningList
   extra = 3
+class LearningListVideoInline(admin.TabularInline):
+  model = LearningVideo
+  extra = 3
 
 # Register your models here.
 class UserAdmin(BaseUserAdmin):
@@ -33,7 +37,7 @@ class CourseAdmin(admin.ModelAdmin):
   inlines = [CourseLearningListInline]
   list_filter = ['area']
 class LearningListAdmin(admin.ModelAdmin):
-  inlines = []
+  inlines = [LearningListVideoInline]
 class LearningVideoAdmin(admin.ModelAdmin):
   inlines = []
 class SkillAdmin(admin.ModelAdmin):

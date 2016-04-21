@@ -14,6 +14,7 @@ urlpatterns = [
   url(r'^groups',    views.GroupsView.as_view(),   name='groups'),
   
   # For learning
+  url(r'^learn/(?P<area_id>[0-9]+)/(?P<course_id>[0-9]+)/new'           , views.VideoNewView.as_view(), name='video-new'),
   url(r'^learn/(?P<area_id>[0-9]+)/(?P<course_id>[0-9]+)/(?P<pk>[0-9]+)', views.LearningListView.as_view(), name='list'),
   url(r'^learn/(?P<area_id>[0-9]+)/(?P<pk>[0-9]+)', views.CourseView.as_view(),       name='course'),
   url(r'^learn/(?P<pk>[0-9]+)', views.AreaView.as_view(), name='area'),

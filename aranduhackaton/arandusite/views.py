@@ -82,3 +82,8 @@ class VideoView(TemplateView):
     return LearningVideo.objects.get(
       learningitem__id = self.kwargs['video_id']
     )
+
+@method_decorator(login_required, name='dispatch')
+class VideoNewView(FormView):
+  model = LearningVideo
+  template_name = 'arandusite/video_new.html'
